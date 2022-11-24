@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div
+    class="w-full top-0 fixed bg-gray-300/40 backdrop-blur-sm shadow-b">
+    <div class="flex px-2 w-[fit-content] items-end">
+      <h1 th:text="${session.appName}" class="p-2"></h1>
+      <span th:text="${session.version}" class="p-2"></span>
+    </div>
+  </div>
+  <div
+    class="w-full mt-12 mx-auto max-w-[800px] rounded-lg grid grid-cols-2 gap-4 p-4">
+    <div class="rounded-lg shadow bg-gray-200">
+      <div class="p-2 border-b-2 border-gray-100">Google Sheet</div>
+      <div class="p-3 border-b-2 border-gray-100">Customizing your google sheet!</div>
+      <div class="p-2 flex items-center justify-end">
+        <button
+          class="px-3 py-2 rounded bg-gray-400/50 rounded-lg hover:bg-gray-400/30">Documentation</button>
+        <a th:href="@{/google/}"
+          class="px-3 py-2 rounded bg-blue-400/50 rounded-lg ml-2 hover:bg-blue-400/30">Start
+          API</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
