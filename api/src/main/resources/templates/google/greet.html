@@ -16,10 +16,10 @@
   </div>
   <div
     class="w-full mt-12 mx-auto max-w-[800px] rounded-lg flex items-center justify-center">
-    <form th:action="@{/google/spreadsheet/}" class="rounded-lg shadow bg-gray-200 w-[400px]">
+    <form th:action="@{/google/spreadsheet/}" method="post" class="rounded-lg shadow bg-gray-200 w-[400px]">
       <div class="p-2 border-b-2 border-gray-100">Enter Your Sheet Id</div>
       <div class="p-3 border-b-2 border-gray-100 flex items-center justify-center">
-        <input class="px-3 py-2 rounded-lg w-full" name="sheetId" placeholder="Enter your sheet Id">
+        <input required="required" class="px-3 py-2 rounded-lg w-full hover:border-0 hover:outline-none focus:outline-none" name="sheetId" placeholder="Enter your sheet Id">
       </div>
       <div class="p-2 flex items-center justify-center">
         <button type="submit"

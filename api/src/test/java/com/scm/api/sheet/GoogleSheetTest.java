@@ -22,7 +22,6 @@ public class GoogleSheetTest {
     
     @BeforeClass
     public static void setup() throws IOException, GeneralSecurityException {
-        sheetService = SheetServiceUtil.getSheetService();
     }
     
     @Test
