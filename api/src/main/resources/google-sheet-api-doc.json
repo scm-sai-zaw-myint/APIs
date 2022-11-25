@@ -1,0 +1,22 @@
+{
+	"service": "SCM API - Package",
+	"version": "v0.1",
+	"api-name": "Google Spread Sheet API",
+	"prefix": "scm/api/spreadsheet",
+	"documentation": {
+		"api": {
+			"/": "Get application documentation",
+			"/sheetId": "Getting spreadsheet data"
+		},
+		"response": {
+			"ok": "The api status success or not! If the value is false it's mean the Exception error occours else the request is success",
+			"code": {
+				"description": "The enum ResponseCode by Itech-api",
+				"204": "Empty response code",
+				"500": "Error response code",
+				"200": "Success response code",
+				"405": "Mission required parameters reponse code"
+			}
+		}
+	}
+}

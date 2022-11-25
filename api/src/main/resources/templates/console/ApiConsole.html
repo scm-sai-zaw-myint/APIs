@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>SCM API console</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style type="text/css">
+textarea{
+    resize: none !important;
+    outline: none;
+    border: 0;
+}
+textarea:focus {
+	outline:none;
+}
+</style>
+</head>
+<body>
+  <div
+    class="w-full top-0 fixed bg-gray-300/40 backdrop-blur-sm shadow-b">
+    <div class="flex px-2 w-[fit-content] items-end">
+      <h1 class="p-2">SCM API - console</h1>
+      <span class="p-2">v0.1</span>
+    </div>
+  </div>
+  <div class="mt-10 p-2">
+    <form method="post" id="api-form" class="w-full flex sticky top-[60px] flex items-center justify-between bg-gray-200">
+        <div class="flex items-center p-2">
+            <select class="appearence-none p-2 rounded min-w-[130px]" id="method">
+                <option value="0">GET</option>
+                <option value="0">POST</option>
+                <option value="0">DELETE</option>
+            </select>
+        </div>
+        <div class="flex items-center w-full p-2">
+            <input type="text" id="url" placeholder="API route" class="rounded-lg hover:outline-none focus:outline-none px-3 py-2 w-full">
+            <button class="px-3 py-2 rounded-lg bg-indigo-500 text-white ml-3" type="button" id="submit-btn">Submit</button>
+        </div>
+    </form>
+    <div class="py-2 my-2 w-full flex">
+        <div class="p-2 h-[500px] w-[20%] bg-gray-200 flex flex-col">
+            <div id="post-act flex flex-col">
+                <span class="font-bold block">Body</span>
+                <textarea rows="10" cols="10" class="w-full p-2" placeholder="body"></textarea>
+            </div>
+        </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    const form = document.getElementById("api-form")
+    const submitBtn = document.getElementById("submit-btn")
+    submitBtn.addEventListener("click",function(){
+    	let input = document.getElementById("url");
+    	form.action = input.value
+    })
+  </script>
+</body>
+</html>
