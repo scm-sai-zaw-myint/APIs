@@ -15,12 +15,17 @@
     </div>
   </div>
   <div
-    class="w-full mt-12 mx-auto max-w-[800px] rounded-lg flex items-center justify-center">
-    <form th:action="@{/google/spreadsheet/}" method="post" class="rounded-lg shadow bg-gray-200 w-[400px]">
+    class="w-full mt-12 mx-auto max-w-[800px] rounded flex items-center justify-center">
+    <form th:action="@{/google/spreadsheet/}" method="post" class="rounded shadow bg-gray-200 w-[400px]">
       <div class="p-2 border-b-2 border-gray-100">Enter Your Sheet Id</div>
       <div class="p-3 border-b-2 border-gray-100 flex items-center justify-center">
         <input required="required" class="px-3 py-2 rounded-lg w-full hover:border-0 hover:outline-none focus:outline-none" name="sheetId" placeholder="Enter your sheet Id">
       </div>
+      <!-- <div class="p-3 border-b-2 border-gray-100 flex items-center justify-start">
+        <input required="required" class="px-3 mr-2 py-2 max-w-[100px] rounded-lg w-full hover:border-0 hover:outline-none focus:outline-none" name="sheetId" placeholder="A0">
+        <span class="font-bold">:</span>
+        <input required="required" class="px-3 py-2 ml-2 max-w-[100px] rounded-lg w-full hover:border-0 hover:outline-none focus:outline-none" name="sheetId" placeholder="D4">
+      </div> -->
       <div class="p-2 flex items-center justify-center">
         <button type="submit"
           class="px-3 py-2 rounded bg-gray-400/50 rounded-lg hover:bg-gray-400/30">Use this sheet</button>

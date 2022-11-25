@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.api.services.sheets.v4.Sheets;
+import com.scm.api.bl.dto.spreadsheet.SpreadSheetDTO;
+import com.scm.api.pkg.data.spreadsheet.SpreadSheetManager;
 import com.scm.api.service.SpreadSheetService;
 import com.scm.api.utils.SheetServiceUtil;
 
@@ -19,9 +21,8 @@ public class SpreadSheetServiceImpl implements SpreadSheetService{
     
     @Override
     public Sheets getCreditential() {
-        
         try {
-            return sheetServiceUtil.getSheetService();
+            return SpreadSheetManager.spreadSheetService();
         } catch (IOException | GeneralSecurityException e) {
             e.printStackTrace();
             return null;
@@ -29,9 +30,19 @@ public class SpreadSheetServiceImpl implements SpreadSheetService{
     }
 
     @Override
-    public Map<Object, Object> getSheetData() {
-        
+    public Map<Object, Object> getSheetData(String sheetId) {
+        Sheets sheet = this.getCreditential();
         return null;
+    }
+
+    @Override
+    public String createSheet(SpreadSheetDTO spreadsheet) {
+        try {
+            return SpreadSheetManager.createSheet(this.getCreditential(), spreadsheet);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }

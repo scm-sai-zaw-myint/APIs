@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.google.api.services.sheets.v4.Sheets;
+import com.scm.api.bl.dto.spreadsheet.SpreadSheetDTO;
 import com.scm.api.service.SpreadSheetService;
 import com.scm.api.utils.SheetServiceUtil;
 
@@ -30,7 +31,12 @@ public class GoogleController {
     
     @PostMapping("/spreadsheet")
     public String configSpreedSheet(@RequestParam String sheetId,Model model) throws IOException, GeneralSecurityException {
-        return "google/spreadsheet";
+        SpreadSheetDTO sheetDTO = new SpreadSheetDTO();
+        sheetDTO.setName(sheetId);
+        String id = this.spreadSheetService.createSheet(sheetDTO);
+        System.out.println("Spreadsheet Id : "+id);
+        model.addAttribute("sheetId",id);
+        return id == null ? "error/fails" : "google/sheet/data";
     }
     
 }
