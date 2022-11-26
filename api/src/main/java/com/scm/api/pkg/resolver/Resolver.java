@@ -13,7 +13,7 @@ public class Resolver {
         return this;
     }
     
-    public Map<String, Object> get(){
+    public Object get(){
         return this.data;
     }
     

@@ -1,6 +1,6 @@
 package com.scm.api.pkg.google.spreadsheet.form;
 
-import java.util.List;
+import com.google.api.services.sheets.v4.model.ValueRange;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,16 +13,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SpreadSheetForm {
+public class SpreadsheetUpdateForm {
 
     private String sheetId;
-
-    private String name;
-
-    private String sheetName;
-
-    private String range;
-
-    private List<List<Object>> values;
-
+    
+    private ValueRange range;
+    
 }

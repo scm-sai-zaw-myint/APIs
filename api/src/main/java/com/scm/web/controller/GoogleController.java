@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.google.api.services.sheets.v4.Sheets;
 import com.scm.api.bl.dto.spreadsheet.SpreadSheetDTO;
 import com.scm.api.service.SpreadSheetService;
-import com.scm.api.utils.SheetServiceUtil;
 
 @Controller
 @RequestMapping("/google")
@@ -25,20 +24,13 @@ public class GoogleController {
     
     @GetMapping("/")
     public String googleGreet(Model model) {
-        Sheets sheet = this.spreadSheetService.getCreditential();
+        Sheets sheet=null;
+        try {
+            sheet = this.spreadSheetService.getCreditential();
+        } catch (IOException | GeneralSecurityException e) {
+            sheet = null;
+        }
         return sheet == null ? "error/unauthorized": "google/greet";
-    }
-    
-    
-    
-    @PostMapping("/spreadsheet")
-    public String configSpreedSheet(@RequestParam String sheetId,Model model) throws IOException, GeneralSecurityException {
-        SpreadSheetDTO sheetDTO = new SpreadSheetDTO();
-        sheetDTO.setName(sheetId);
-        String id = this.spreadSheetService.createSheet(sheetDTO);
-        System.out.println("Spreadsheet Id : "+id);
-        model.addAttribute("sheetId",id);
-        return id == null ? "error/fails" : "google/sheet/data";
     }
     
 }

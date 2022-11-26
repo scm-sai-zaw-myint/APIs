@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,5 +35,18 @@ public class SpreadSheetController {
     public Map<?, ?> getSpreadSheet(@PathVariable Object sheetId, @Nullable @ModelAttribute SpreadSheetForm form,@Nullable @RequestParam String fields){
         return (Map<?, ?>) spreadSheetService.resolveRequest((String)sheetId, form.getRange(), form.getName(), fields);
     }
+    
+    @PostMapping("/create")
+    @ResponseBody
+    public Map<?, ?> createSpreadSheet(@Nullable@RequestBody SpreadSheetForm form){
+        return (Map<?, ?>) spreadSheetService.createSpreadSheet(form);
+    }
+    
+    @PostMapping("/{sheetId}/update")
+    @ResponseBody
+    public Map<?,?> updateSpreadsheet(@PathVariable String sheetId, @RequestBody SpreadSheetForm form){
+        return (Map<?,?>) spreadSheetService.updateSpreadSheet(sheetId,form);
+    }
+    
     
 }
